@@ -12,7 +12,31 @@
 
 </ion-header>
 
+<ion-content  padding>
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+<!--
+      <ion-icon [name]="item.icon" item-start></ion-icon>
+-->
+      <div class="item-note">
+        <h1>
+          <b>{{item.title}}</b>
+        </h1>
+      </div>
+      <div class="item-note">
+        <b>Length:</b> {{item.length}}
+        <b>Height:</b> {{item.height}}
+        <b>Depth:</b> {{item.depth}}
+        <b>Joint:</b> {{item.joint}}
+      </div>
+      <div class="item-note">
+        <b>Note:</b> {{item.note}}
+      </div>
 
-<ion-content padding>
-
+    </button>
+  </ion-list>
+  <div *ngIf="selectedItem" padding>
+    You navigated here from
+    <b>{{selectedItem.title}}</b>
+  </div>
 </ion-content>
