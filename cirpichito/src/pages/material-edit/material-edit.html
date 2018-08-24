@@ -1,21 +1,30 @@
-<ion-header>
+<form [formGroup]="credentialsForm">
 
-  <ion-navbar>
-    <ion-title>MaterialEdit</ion-title>
-  </ion-navbar>
+  <ion-item>
+    <ion-label floating>Title</ion-label>
+    <ion-input [formControl]="credentialsForm.controls['title']" type="title"></ion-input>
+  </ion-item>
 
-</ion-header>
+  <!--   <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input [formControl]="credentialsForm.controls['password']"
+        type="password"></ion-input>
+  </ion-item>      
+ -->
+  <ion-row>
+    <ion-col text-center>
+      <button ion-button block color="secondary" (click)="onSave()">
+        Save
+      </button>
+    </ion-col>
+  </ion-row>
 
+  <ion-row>
+    <ion-col text-center>
+      <button ion-button clear color="light" (click)="onCancel()">
+        Cancel
+      </button>
+    </ion-col>
+  </ion-row>
 
-<ion-content padding>
-  <form>
-    <ion-list>
-      <ion-item>
-        <ion-label for="title" stacked>title</ion-label>
-        <ion-input type="text" name="title" [(ngModel)]="material.title" ></ion-input>
-      </ion-item>
-    <div padding>
-      <button ion-button color="primary" (click)="onClicked()">save</button>
-    </div>
-  </form>
-</ion-content>
+</form>

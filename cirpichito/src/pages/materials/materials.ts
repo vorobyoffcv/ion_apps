@@ -22,6 +22,7 @@ export class MaterialsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.selectedItem = navParams.get('item');
+    console.log(navParams.get('item'));
 
     this.items = [];
     for (let i = 1; i < 11; i++) {

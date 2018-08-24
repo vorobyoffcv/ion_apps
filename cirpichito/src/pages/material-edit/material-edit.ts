@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
+import { MaterialModel } from '../../components/material-model';
 
 /**
  * Generated class for the MaterialEditPage page.
@@ -14,18 +17,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'material-edit.html',
 })
 export class MaterialEditPage {
+  
   selectedMaterial: MaterialModel = null;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-	this.selectedMaterial = navParams.get("material");
+  
+  credentialsForm: FormGroup;
+
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public navParams: NavParams) {
+    this.selectedMaterial = navParams.get("material");
+    this.credentialsForm = this.formBuilder.group({
+      title: [selectedMaterial.title]
+      // ,      password: ['']
+    });
+    this.credentialsForm.title = '123';
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MaterialEditPage');
   }
-  onClicked(){
-  }
 
-  onSubmit(formValue: any){
+  onSubmit(formValue: any) {
     console.log(formValue);
   }
 
