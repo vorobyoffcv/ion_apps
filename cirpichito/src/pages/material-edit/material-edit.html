@@ -1,30 +1,22 @@
-<form [formGroup]="credentialsForm">
+<ion-header>
 
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">Close</button>
+    </ion-buttons>
+    <ion-title>Modals</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
   <ion-item>
     <ion-label floating>Title</ion-label>
+<!--
     <ion-input [formControl]="credentialsForm.controls['title']" type="title"></ion-input>
+ -->
   </ion-item>
 
-  <!--   <ion-item>
-    <ion-label floating>Password</ion-label>
-    <ion-input [formControl]="credentialsForm.controls['password']"
-        type="password"></ion-input>
-  </ion-item>      
- -->
-  <ion-row>
-    <ion-col text-center>
-      <button ion-button block color="secondary" (click)="onSave()">
-        Save
-      </button>
-    </ion-col>
-  </ion-row>
-
-  <ion-row>
-    <ion-col text-center>
-      <button ion-button clear color="light" (click)="onCancel()">
-        Cancel
-      </button>
-    </ion-col>
-  </ion-row>
-
-</form>
+  <button ion-button color="danger" full (click)="dismiss()">Close Modal</button>
+</ion-content>

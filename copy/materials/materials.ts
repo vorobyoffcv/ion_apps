@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MaterialModel } from '../../components/material-model';
-import { ModalController } from '../../../../../src';
-import { MaterialEditPage } from '../material-edit/material-edit';
-
 /**
  * Generated class for the MaterialsPage page.
  *
@@ -23,7 +20,7 @@ export class MaterialsPage {
 //  items: Array<{ title: string, note: string, length: number, height: number, depth: number, joint: number}>;
   items: Array<MaterialModel>;
 
-  constructor(public modalCtrl: ModalController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.selectedItem = navParams.get('item');
     console.log(navParams.get('item'));
 
@@ -49,10 +46,7 @@ export class MaterialsPage {
     //    this.navCtrl.push(MaterialsPage, {
     //      item: item
     //    });
-//    this.navCtrl.push("MaterialEditPage", { material: item });
-    
-    let myModal = this.modalCtrl.create(MaterialEditPage, { material: item });
-    myModal.present();
+    this.navCtrl.push("MaterialEditPage", { material: item });
 //    this.navCtrl.setRoot(this.constructor.name, {
 //      item: item
 //    });

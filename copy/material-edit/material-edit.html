@@ -1,0 +1,30 @@
+<form [formGroup]="credentialsForm">
+
+  <ion-item>
+    <ion-label floating>Title</ion-label>
+    <ion-input [formControl]="credentialsForm.controls['title']" type="title"></ion-input>
+  </ion-item>
+
+  <!--   <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input [formControl]="credentialsForm.controls['password']"
+        type="password"></ion-input>
+  </ion-item>      
+ -->
+  <ion-row>
+    <ion-col text-center>
+      <button ion-button block color="secondary" (click)="onSave()">
+        Save
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col text-center>
+      <button ion-button clear color="light" (click)="onCancel()">
+        Cancel
+      </button>
+    </ion-col>
+  </ion-row>
+ <button ion-button type="submit" >Submit</button>
+</form>
