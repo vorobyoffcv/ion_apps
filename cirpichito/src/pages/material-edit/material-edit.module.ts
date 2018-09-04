@@ -9,5 +9,8 @@ import { MaterialEditPage } from './material-edit';
   imports: [
     IonicPageModule.forChild(MaterialEditPage),
   ],
+  entryComponents: [
+    MaterialEditPage,
+  ]
 })
 export class MaterialEditPageModule {}

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, ModalController, NavController, NavParams } from 'ionic-angular';
 import { MaterialModel } from '../../components/material-model';
-import { ModalController } from '../../../../../src';
 import { MaterialEditPage } from '../material-edit/material-edit';
 
 /**
