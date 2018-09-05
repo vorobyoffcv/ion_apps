@@ -9,12 +9,16 @@ import { MaterialModel } from '../../components/material-model';
 })
 export class MaterialEditPage {
   
+  selectedMaterial: MaterialModel = null;
   material: MaterialModel = null;
   
 
   constructor(public viewCtrl: ViewController, public navParams: NavParams) {
     //this.selectedMaterial = navParams.get("material");
-    this.material = navParams.data.material;
+    this.material = new MaterialModel({});
+    this.selectedMaterial = navParams.data.material;
+    this.material = Object.assign(this.material, navParams.data.material);
+//    this.material.fillFrom(navParams.data.material);
 
   }
 
@@ -27,6 +31,15 @@ export class MaterialEditPage {
 //  }
 
   dismiss() {
+    this.viewCtrl.dismiss();
+  }
+  save() {
+    this.selectedMaterial = Object.assign(this.selectedMaterial, this.material);
+//    this.selectedMaterial.fillFrom(this.material);
+
+    this.viewCtrl.dismiss();
+  }
+  cancel() {
     this.viewCtrl.dismiss();
   }
 

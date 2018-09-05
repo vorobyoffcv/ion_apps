@@ -2,9 +2,9 @@
 
   <ion-navbar>
     <ion-buttons start>
-      <button ion-button (click)="dismiss()">Close</button>
+      <button ion-button (click)="cancel()">Cancel</button>
     </ion-buttons>
-    <ion-title>Modals</ion-title>
+    <ion-title>{{material.title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -13,10 +13,8 @@
 <ion-content padding>
   <ion-item>
     <ion-label floating>Title</ion-label>
-<!--
-    <ion-input [formControl]="credentialsForm.controls['title']" type="title"></ion-input>
- -->
+    <ion-input [(ngModel)]="material.title" type="title"></ion-input>
   </ion-item>
 
-  <button ion-button color="danger" full (click)="dismiss()">Close Modal</button>
+  <button ion-button color="danger" full (click)="save()">Save</button>
 </ion-content>

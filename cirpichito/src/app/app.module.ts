@@ -7,13 +7,15 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { MaterialEditPageModule } from '../pages/material-edit/material-edit.module';
+
 @NgModule({
   declarations: [
     MyApp
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp), MaterialEditPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

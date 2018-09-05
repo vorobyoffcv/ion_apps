@@ -29,6 +29,7 @@ export class MaterialsPage {
     this.items = [];
     for (let i = 1; i < 11; i++) {
       this.items.push({
+        id: 0,
         title: 'Brick ' + i,
         note: 'Red...',
         length: 250,
