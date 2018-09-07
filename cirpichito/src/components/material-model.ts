@@ -17,5 +17,5 @@ export class MaterialModel {
   //    for (key in obj){
     //    this[key]=obj[key];
     //}
-}
+//	}
 }

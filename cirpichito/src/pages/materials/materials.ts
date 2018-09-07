@@ -3,12 +3,8 @@ import { IonicPage, ModalController, NavController, NavParams } from 'ionic-angu
 import { MaterialModel } from '../../components/material-model';
 import { MaterialEditPage } from '../material-edit/material-edit';
 
-/**
- * Generated class for the MaterialsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Storage } from '@ionic/storage';
+
 
 @IonicPage()
 @Component({
@@ -22,10 +18,22 @@ export class MaterialsPage {
 //  items: Array<{ title: string, note: string, length: number, height: number, depth: number, joint: number}>;
   items: Array<MaterialModel>;
 
-  constructor(public modalCtrl: ModalController, public navParams: NavParams) {
+  storage: Storage;
+
+  constructor(public modalCtrl: ModalController, public navParams: NavParams, public aStorage: Storage) {
+    this.storage = aStorage;
+
     this.selectedItem = navParams.get('item');
     console.log(navParams.get('item'));
 
+    this.storage.ready().then(() => {
+      this.storage.get('materials').then((data: string) => {
+        if (data != null) this.items = JSON.parse(data);
+        else this.items = [];
+      });
+    });
+
+    /*
     this.items = [];
     for (let i = 1; i < 11; i++) {
       this.items.push({
@@ -38,6 +46,7 @@ export class MaterialsPage {
         joint: 12
       });
     }
+    */
   }
 
   ionViewDidLoad() {
@@ -51,7 +60,7 @@ export class MaterialsPage {
     //    });
 //    this.navCtrl.push("MaterialEditPage", { material: item });
     
-    let myModal = this.modalCtrl.create(MaterialEditPage, { material: item });
+    let myModal = this.modalCtrl.create(MaterialEditPage, { material: item, materials: this.items });
     myModal.present();
 //    this.navCtrl.setRoot(this.constructor.name, {
 //      item: item

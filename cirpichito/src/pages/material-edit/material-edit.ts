@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavParams, ViewController  } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 import { MaterialModel } from '../../components/material-model';
 
@@ -11,13 +12,16 @@ export class MaterialEditPage {
   
   selectedMaterial: MaterialModel = null;
   material: MaterialModel = null;
-  
+  materials: Array<MaterialModel>;
+  storage: Storage;
 
-  constructor(public viewCtrl: ViewController, public navParams: NavParams) {
+  constructor(public viewCtrl: ViewController, public navParams: NavParams, public aStorage: Storage) {
     //this.selectedMaterial = navParams.get("material");
-    this.material = new MaterialModel({});
     this.selectedMaterial = navParams.data.material;
-    this.material = Object.assign(this.material, navParams.data.material);
+    this.material = Object.assign({}, navParams.data.material);
+    this.materials = navParams.data.materials;
+    this.storage = aStorage;
+
 //    this.material.fillFrom(navParams.data.material);
 
   }
@@ -36,7 +40,9 @@ export class MaterialEditPage {
   save() {
     this.selectedMaterial = Object.assign(this.selectedMaterial, this.material);
 //    this.selectedMaterial.fillFrom(this.material);
-
+    this.storage.ready().then(() => {
+        this.storage.set('materials', JSON.stringify(this.materials));
+    });
     this.viewCtrl.dismiss();
   }
   cancel() {
