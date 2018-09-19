@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>materials</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content  padding>
+
+<ion-grid>
+<ion-row *ngFor="let item of items">
+    <ion-col width-25>
+        <div>
+        <ion-label floating>Length</ion-label>
+        </div>
+        <div>
+        <ion-input [(ngModel)]="item.length" type="title"></ion-input>
+        </div>
+    </ion-col>
+    <ion-col width-25>
+        <ion-label floating>Height</ion-label>
+        <ion-input [(ngModel)]="item.height" type="title"></ion-input>
+    </ion-col>
+    <ion-col width-25>
+        <ion-label floating>Depth</ion-label>
+        <ion-input [(ngModel)]="item.depth" type="title"></ion-input>
+    </ion-col>
+    <ion-col width-25>
+        <ion-label floating>Joint</ion-label>
+        <ion-input [(ngModel)]="item.joint" type="title"></ion-input>
+    </ion-col>
+</ion-row>
+</ion-grid>
+</ion-content>

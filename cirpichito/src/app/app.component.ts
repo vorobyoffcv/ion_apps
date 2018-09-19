@@ -13,9 +13,11 @@ export class MyApp {
   strMaterialsPage: string = 'MaterialsPage';
   strMaterialsPageName: string = 'Материалы';
 
+  strMaterialListPage: string = 'MaterialListPage';
+  strMaterialListPageName: string = 'Материалы2';
 
 
-  rootPage: string = 'MaterialsPage';
+  rootPage: string = 'MaterialListPage';
 
   pages: Array<{title: string, name: string}>;
 
@@ -23,7 +25,8 @@ export class MyApp {
     this.initializeApp();
 
     this.pages = [
-      { title: this.strMaterialsPageName, name: this.strMaterialsPage }
+      { title: this.strMaterialsPageName, name: this.strMaterialsPage },
+      { title: this.strMaterialListPageName, name: this.strMaterialListPage }
     ];
 
   }
