@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, ModalController, NavParams } from 'ionic-angular';
 import { MaterialModel } from '../../components/material-model';
+import { MaterialEditPage } from '../material-edit/material-edit';
+
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -13,46 +16,31 @@ export class MaterialListPage {
   icons: string[];
   items: Array<MaterialModel>;
 
-//  storage: Storage;
+  storage: Storage;
 
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-//  }
-
-//  constructor(public navCtrl: NavController, public navParams: NavParams, public aStorage: Storage) {
-//    this.storage = aStorage;
+  constructor(public modalCtrl: ModalController, public navParams: NavParams, public aStorage: Storage) {
+    this.storage = aStorage;
 
     this.selectedItem = navParams.get('item');
     console.log(navParams.get('item'));
 
-//    this.storage.ready().then(() => {
-//      this.storage.get('materials').then((data: string) => {
-//        if (data != null) this.items = JSON.parse(data);
-//        else this.items = [];
-//      });
-//    });
-
-    
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        id: 0,
-        title: 'Brick ' + i,
-        note: 'Red...',
-        length: 250,
-        height: 60,
-        depth: 120,
-        joint: 12
+    this.storage.ready().then(() => {
+      this.storage.get('materials').then((data: string) => {
+        if (data != null) this.items = JSON.parse(data);
+        else this.items = [];
       });
-    }
-    
-  }
+    });
 
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MaterialListPage');
   }
 
+  itemTapped(event, item) {
+    let myModal = this.modalCtrl.create(MaterialEditPage, { material: item, materials: this.items });
+    myModal.present();
+  }
 
 }
